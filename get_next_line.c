@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:59 by mminasya          #+#    #+#             */
-/*   Updated: 2025/03/31 22:00:58 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/03/31 22:37:15 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*fill_stash(int fd, char *stash)
 			return (myfree(stash));
 		free(stash);
 		stash = tmp;
-		bytes_read = read(fd, buffer BUFFER_SIZE);
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	if (bytes_read < 0)
 		return (myfree(stash));
