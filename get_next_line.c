@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:59 by mminasya          #+#    #+#             */
-/*   Updated: 2025/03/31 22:37:15 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/03/31 23:02:56 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ char	*fill_stash(int fd, char *stash)
 		return (NULL);
 	if (!stash)
 		stash = ft_strdup("");
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	while (!ft_strchr(stash, '\n') && bytes_read > 0)
+	while (!ft_strchr(stash, '\n'))
 	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read <= 0)
+			break ;
 		buffer[bytes_read] = '\0';
 		tmp = ft_strjoin(stash, buffer);
 		if (!tmp)
 			return (myfree(stash));
 		free(stash);
 		stash = tmp;
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	if (bytes_read < 0)
 		return (myfree(stash));
