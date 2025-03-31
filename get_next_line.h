@@ -11,11 +11,11 @@
 
 # include <fcntl.h>
 
-void myfree(char **line);
-char *read_error(char **stash);
+void *myfree(char *line);
 char *fill_stash(int fd, char *stash);
-char *read_line(char *stash);
+char *the_line(char *stash);
 char *get_next_line(int fd);
+char *update_stash(char *stash);
 size_t ft_strlen(char *s);
 char *ft_strdup(char *s1);
 char *ft_strchr(char *s, int c);

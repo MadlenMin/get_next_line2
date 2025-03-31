@@ -2,8 +2,10 @@
 
 size_t ft_strlen(char *s)
 {
-	int i;
+	size_t i;
 	i = 0;
+	if(!s)
+		return(0);
 	while(s[i])
 	{
 		i++;
@@ -33,6 +35,8 @@ char *ft_strdup(char *s1)
 
 char *ft_strchr(char *s, int c )
 {
+	if(!s)
+		return (NULL);
 	while(*s)
 	{
 		if(*s == (char)c)
@@ -95,5 +99,4 @@ char *ft_strjoin(char *s1, char *s2)
 	new[i] = '\0';
 	return (new);
 }
-
 
