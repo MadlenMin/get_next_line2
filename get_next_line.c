@@ -51,14 +51,14 @@ char *update_stash(char *stash)
 	newline_pos = ft_strchr(stash, '\n');
 	if(!newline_pos)
 	{
-		myfree(stash);
+		free(stash);
 		return(NULL);
 	}
 	new_stash = ft_strdup(newline_pos + 1);
 	if(!new_stash)
-		return(stash);
+		return (NULL);
 
-	myfree(stash);
+	free(stash);
 	return(new_stash);
 }
 char *get_next_line(int fd)
@@ -73,11 +73,7 @@ char *get_next_line(int fd)
 		return(NULL);
 	line = the_line(stash);
 	stash = update_stash(stash);
-	if (!stash || !*stash)
-	{
-		myfree(stash);
-		stash = NULL;
-	}
+
 	return(line);
 	
 }
