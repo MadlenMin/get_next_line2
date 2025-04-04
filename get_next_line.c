@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:59 by mminasya          #+#    #+#             */
-/*   Updated: 2025/03/31 23:02:56 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/04 20:43:00 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ char	*fill_stash(int fd, char *stash)
 	ssize_t	bytes_read;
 	char	*tmp;
 
-	if (BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!stash)
 		stash = ft_strdup("");
-	while (!ft_strchr(stash, '\n'))
+	while (stash && !ft_strchr(stash, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read <= 0)
@@ -65,13 +65,10 @@ char	*update_stash(char *stash)
 
 	newline_pos = ft_strchr(stash, '\n');
 	if (!newline_pos)
-	{
-		free(stash);
-		return (NULL);
-	}
+		return (myfree(stash));
 	new_stash = ft_strdup(newline_pos + 1);
 	if (!new_stash)
-		return (NULL);
+		return(myfree(stash));
 	free(stash);
 	return (new_stash);
 }

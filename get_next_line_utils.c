@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:05 by mminasya          #+#    #+#             */
-/*   Updated: 2025/03/31 22:14:05 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/04 20:51:18 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
-	i = 0;
 	if (!s)
 		return (0);
+	i = 0;
 	while (s[i])
 	{
 		i++;
@@ -30,13 +30,16 @@ char	*ft_strdup(char *s1)
 {
 	int		i;
 	char	*buffer;
-	int		buffer_len;
+	int		len;
 
+	if(!s1)
+		return(NULL);
 	i = 0;
-	buffer_len = ft_strlen(s1);
-	buffer = (char *)malloc(buffer_len + 1);
+	len = ft_strlen(s1);
+	buffer = (char *)malloc(len + 1);
 	if (!buffer)
 		return (NULL);
+	i = 0;
 	while (s1[i])
 	{
 		buffer[i] = s1[i];
@@ -46,7 +49,7 @@ char	*ft_strdup(char *s1)
 	return (buffer);
 }
 
-char	*ft_strchr(char *s, int c )
+char	*ft_strchr(char *s, int c)
 {
 	if (!s)
 		return (NULL);
@@ -56,7 +59,7 @@ char	*ft_strchr(char *s, int c )
 			return ((char *)s);
 		s++;
 	}
-	if (*s == (char)c)
+	if (c == '\0')
 		return ((char *)s);
 	return (NULL);
 }
@@ -94,17 +97,19 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		len;
 	char	*new;
 
+	if(!s1 || !s2)
+		return(NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	new = (char *)malloc(len + 1);
 	if (!new)
 		return (NULL);
 	i = 0;
-	j = 0;
 	while (s1[i])
 	{
 		new[i] = s1[i];
 		i++;
 	}
+	j = 0;
 	while (s2[j])
 	{
 		new[i] = s2[j];
@@ -112,5 +117,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	new[i] = '\0';
+	free(s1);
 	return (new);
 }
