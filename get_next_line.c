@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:59 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/04 20:43:00 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/04 20:55:52 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*update_stash(char *stash)
 		return (myfree(stash));
 	new_stash = ft_strdup(newline_pos + 1);
 	if (!new_stash)
-		return(myfree(stash));
+		return (myfree(stash));
 	free(stash);
 	return (new_stash);
 }

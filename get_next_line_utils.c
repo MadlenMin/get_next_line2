@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:05 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/04 20:51:18 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/04 21:01:38 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ char	*ft_strdup(char *s1)
 	char	*buffer;
 	int		len;
 
-	if(!s1)
-		return(NULL);
+	if (!s1)
+		return (NULL);
 	i = 0;
 	len = ft_strlen(s1);
 	buffer = (char *)malloc(len + 1);
@@ -97,25 +97,18 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		len;
 	char	*new;
 
-	if(!s1 || !s2)
-		return(NULL);
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	new = (char *)malloc(len + 1);
 	if (!new)
 		return (NULL);
 	i = 0;
 	while (s1[i])
-	{
-		new[i] = s1[i];
-		i++;
-	}
+		new[i++] = s1[i];
 	j = 0;
 	while (s2[j])
-	{
-		new[i] = s2[j];
-		i++;
-		j++;
-	}
+		new[i++] = s2[j++];
 	new[i] = '\0';
 	free(s1);
 	return (new);
