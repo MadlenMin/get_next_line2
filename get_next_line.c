@@ -6,17 +6,17 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:59 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/04 20:55:52 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/05 20:23:13 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*myfree(char *line)
+void	myfree(char *line)
 {
 	if (line)
 		free(line);
-	return (NULL);
+	line = NULL;
 }
 
 char	*fill_stash(int fd, char *stash)
@@ -37,12 +37,12 @@ char	*fill_stash(int fd, char *stash)
 		buffer[bytes_read] = '\0';
 		tmp = ft_strjoin(stash, buffer);
 		if (!tmp)
-			return (myfree(stash));
+			return (myfree(&stash));
 		free(stash);
 		stash = tmp;
 	}
 	if (bytes_read < 0)
-		return (myfree(stash));
+		return (myfree(&stash));
 	return (stash);
 }
 
@@ -65,10 +65,10 @@ char	*update_stash(char *stash)
 
 	newline_pos = ft_strchr(stash, '\n');
 	if (!newline_pos)
-		return (myfree(stash));
+		return (myfree(&stash));
 	new_stash = ft_strdup(newline_pos + 1);
 	if (!new_stash)
-		return (myfree(stash));
+		return (myfree(&stash));
 	free(stash);
 	return (new_stash);
 }
