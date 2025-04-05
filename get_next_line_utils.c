@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:05 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/04 21:36:46 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/05 19:51:25 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,15 @@ char	*ft_strjoin(char *s1, char *s2)
 	new = (char *)malloc(len + 1);
 	if (!new)
 		return (NULL);
-	i = -1;
-	while (s1[i++])
+	i = 0;
+	while (s1[i])
+	{
 		new[i] = s1[i];
+		i++;
+	}
 	j = 0;
 	while (s2[j])
 		new[i++] = s2[j++];
 	new[i] = '\0';
-	if (s1)
-		free(s1);
 	return (new);
 }
