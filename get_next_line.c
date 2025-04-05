@@ -6,17 +6,17 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:59 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/05 20:23:13 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/05 20:26:06 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	myfree(char *line)
+void	myfree(char **line)
 {
-	if (line)
-		free(line);
-	line = NULL;
+	if (*line)
+		free(*line);
+	*line = NULL;
 }
 
 char	*fill_stash(int fd, char *stash)
