@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 21:48:59 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/05 21:09:50 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/06 20:51:04 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	*myfree(char *line)
 {
 	if (line)
 		free(line);
-	return(NULL)
-
+	return (NULL);
 }
 
 char	*fill_stash(int fd, char *stash)
@@ -97,4 +96,4 @@ int main()
 
         close(fd);
         return 0;
-}*/
+*/
